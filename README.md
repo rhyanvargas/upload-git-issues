@@ -218,6 +218,20 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## ⚖️ Legal Disclaimer
+
+**IMPORTANT**: By using this tool, you acknowledge that:
+
+- **YOU** are solely responsible for ensuring the security and safety of your files
+- **YOU** must verify that any CSV files do not contain sensitive or confidential information  
+- **YOU** are responsible for verifying the security of any tools you use
+- **YOU** should review the source code and run security audits before use
+- **YOU** must ensure proper authorization for GitHub API usage and repository access
+
+This software is provided "AS IS" without warranties. See [DISCLAIMER.md](DISCLAIMER.md) for complete legal terms.
+
+**🔒 Security Recommendation**: Always review your CSV data and test with non-sensitive information first.
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
