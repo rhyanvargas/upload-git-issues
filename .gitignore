@@ -63,6 +63,9 @@ jspm_packages/
 # Output of 'npm pack'
 *.tgz
 
+# Development documentation
+GitHub_Release_Best_Practices.md
+
 # Yarn Integrity file
 .yarn-integrity
 

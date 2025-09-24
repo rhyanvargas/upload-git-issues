@@ -47,14 +47,14 @@ git clone https://github.com/rhyanvargas/upload-git-issues.git
 cd upload-git-issues
 npm install
 npm run dev -- --help
-npm run dev -- test.csv --dry-run
+npm run dev -- example.csv --dry-run
 ```
 
 ### Method 2: Build and Test
 ```bash
 npm run build
 npm start -- --help
-npm start -- test.csv --dry-run
+npm start -- example.csv --dry-run
 ```
 
 ### Method 3: Global Installation Testing (Most Realistic)
@@ -64,7 +64,7 @@ npm link
 
 # Test as if installed globally
 upload-git-issues --help
-upload-git-issues test.csv --dry-run
+upload-git-issues example.csv --dry-run
 
 # Unlink when done testing
 npm unlink -g upload-git-issues
@@ -72,12 +72,7 @@ npm unlink -g upload-git-issues
 
 **⚠️ Important**: `npm link` is safe and local-only. It does NOT publish to npm registry.
 
-### Create Test CSV
-```csv
-Title,Description,Labels,Priority
-Test Issue 1,This is a test description,bug;enhancement,high
-Test Issue 2,Another test issue,documentation,medium
-```
+> **💡 Tip**: Use the included `example.csv` file for testing, or create your own following the CSV format shown in the Quick Start section above.
 
 ## 📋 When to Use This Tool
 

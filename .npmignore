@@ -8,9 +8,10 @@ tsconfig.json
 .prettierrc*
 jest.config.*
 
-# Documentation
-*.md
-!README.md
+# Documentation (keep essential docs)
+QUICKSTART.md
+RELEASE_NOTES_*.md
+GitHub_Release_Best_Practices.md
 
 # Test files
 test/

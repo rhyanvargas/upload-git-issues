@@ -196,7 +196,7 @@ Latest security audit results:
 If you discover a security vulnerability:
 
 1. **DO NOT** open a public issue
-2. Email security concerns to: [your-email]
+2. Report security issues via GitHub's private vulnerability reporting
 3. Include detailed reproduction steps
 4. Allow 48 hours for initial response
 
