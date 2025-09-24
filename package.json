@@ -1,6 +1,6 @@
 {
   "name": "upload-git-issues",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A zero-config CLI tool to bulk upload CSV data to GitHub Issues",
   "type": "module",
   "main": "dist/index.js",
