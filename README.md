@@ -2,7 +2,7 @@
 
 **Zero-config CLI to bulk upload CSV data to GitHub Issues**
 
-Perfect for Linear/Jira migrations - works with any CSV format, no setup required.
+Perfect for platform migrations - create GitHub Issues from your CSV exports, then use Linear's native GitHub import to sync.
 
 ## 🚀 Quick Start
 
@@ -15,16 +15,16 @@ npx upload-git-issues issues.csv --dry-run --verbose
 ```
 
 **What happens:**
-1. Interactive prompts guide you through authentication and repo selection
-2. Intelligent CSV parsing (works with Linear, Jira, any format)
+1. Interactive prompts guide you through GitHub authentication and repo selection
+2. Intelligent CSV parsing (works with Linear exports, Jira exports, any CSV format)
 3. Beautiful progress indicators show real-time status
-4. Direct links to all created issues
+4. Issues created in GitHub - ready for Linear's native GitHub import
 
 ## 📋 When to Use This Tool
 
 | **Your Situation**                         | **Use This Tool?**           | **Why**                                       |
 | ------------------------------------------ | ---------------------------- | --------------------------------------------- |
-| **🔄 Migrating from Linear/Jira/Asana**    | ✅ **Perfect Choice**        | Works with exports out-of-the-box, zero setup |
+| **🔄 Migrating to Linear via GitHub**      | ✅ **Perfect Choice**        | Create GitHub Issues, then use Linear's GitHub import |
 | **📊 Have CSV data to upload**             | ✅ **Perfect Choice**        | Intelligent parsing handles any CSV format    |
 | **⚡ Need it done quickly**                | ✅ **Perfect Choice**        | One command, 2 minutes to complete            |
 | **🏢 Enterprise/Security requirements**    | ✅ **Perfect Choice**        | Built-in security audits and compliance       |
@@ -60,6 +60,8 @@ Title,Description,Labels,Assignee,Priority
 ```
 
 The tool intelligently maps column names (Title/title/TITLE all work) and converts Priority/Status to labels.
+
+> **💡 Linear Migration Tip:** After creating GitHub Issues, use Linear's native GitHub import feature to sync them into your Linear workspace.
 
 ## 🔑 GitHub Authentication
 
