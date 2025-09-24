@@ -12,7 +12,8 @@
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
     "test-parser": "node test-parser.js",
-    "prepublishOnly": "npm run build",
+    "security-audit": "node security-audit.js",
+    "prepublishOnly": "npm run build && npm run security-audit",
     "test": "jest"
   },
   "keywords": [
@@ -44,8 +45,19 @@
   "engines": {
     "node": ">=16.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rhyanvargas/upload-git-issues.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rhyanvargas/upload-git-issues/issues"
+  },
+  "homepage": "https://github.com/rhyanvargas/upload-git-issues#readme",
   "files": [
     "dist/**/*",
-    "README.md"
+    "README.md",
+    "LICENSE",
+    "DISCLAIMER.md",
+    "SECURITY.md"
   ]
 }
