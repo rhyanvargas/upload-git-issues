@@ -1,8 +1,13 @@
-# 🚀 Upload Git Issues
+# 🚀 Upload Git Issues 
+![NPM Collaborators](https://img.shields.io/npm/collaborators/upload-git-issues)
 
 **Zero-config CLI to bulk upload CSV data to GitHub Issues**
 
-Perfect for platform migrations - create GitHub Issues from your CSV exports, then use Linear's native GitHub import to sync.
+*Perfect for platform migrations - create GitHub Issues from your CSV exports, then use Linear's native GitHub import to sync.*
+
+
+
+
 
 ## 🚀 Quick Start
 
