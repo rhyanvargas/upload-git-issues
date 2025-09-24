@@ -20,6 +20,65 @@ npx upload-git-issues issues.csv --dry-run --verbose
 3. Beautiful progress indicators show real-time status
 4. Issues created in GitHub - ready for Linear's native GitHub import
 
+### 📄 Sample CSV to Get Started
+
+Create a file called `issues.csv` with this content:
+
+```csv
+Title,Description,Labels,Priority,Assignee
+"Fix login authentication bug","Users are unable to log in with valid credentials","bug,urgent","High","johndoe"
+"Add dark mode toggle","Implement dark/light theme switcher in user settings","enhancement,ui","Medium","janedoe"
+"Update API documentation","Refresh the API docs with latest endpoint changes","documentation","Low","techwriter"
+"Optimize database queries","Improve performance of user dashboard queries","performance,backend","High","dbadmin"
+```
+
+Then run:
+```bash
+npx upload-git-issues issues.csv --dry-run
+```
+
+## 🧪 Local Development & Testing
+
+> **Note**: This tool is currently in pre-release. For local testing and development:
+
+### Method 1: Development Mode (Fastest)
+```bash
+git clone https://github.com/rhyanvargas/upload-git-issues.git
+cd upload-git-issues
+npm install
+npm run dev -- --help
+npm run dev -- test.csv --dry-run
+```
+
+### Method 2: Build and Test
+```bash
+npm run build
+npm start -- --help
+npm start -- test.csv --dry-run
+```
+
+### Method 3: Global Installation Testing (Most Realistic)
+```bash
+# Link for global testing (does NOT publish live)
+npm link
+
+# Test as if installed globally
+upload-git-issues --help
+upload-git-issues test.csv --dry-run
+
+# Unlink when done testing
+npm unlink -g upload-git-issues
+```
+
+**⚠️ Important**: `npm link` is safe and local-only. It does NOT publish to npm registry.
+
+### Create Test CSV
+```csv
+Title,Description,Labels,Priority
+Test Issue 1,This is a test description,bug;enhancement,high
+Test Issue 2,Another test issue,documentation,medium
+```
+
 ## 📋 When to Use This Tool
 
 | **Your Situation**                         | **Use This Tool?**           | **Why**                                       |
