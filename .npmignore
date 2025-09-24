@@ -1,0 +1,43 @@
+# Source files
+src/
+tsconfig.json
+
+# Development files
+.gitignore
+.eslintrc*
+.prettierrc*
+jest.config.*
+
+# Documentation
+*.md
+!README.md
+
+# Test files
+test/
+tests/
+__tests__/
+*.test.*
+*.spec.*
+
+# Development dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.parcel-cache/

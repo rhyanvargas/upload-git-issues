@@ -1,0 +1,6 @@
+Title,Description,Labels,Priority,Status,Assignee
+"Setup CI/CD Pipeline","Configure GitHub Actions for automated testing and deployment","devops,ci,enhancement","High","Todo","developer1"
+"Fix Mobile Responsive Layout","The navigation menu doesn't work properly on mobile devices","bug,mobile,ui","High","In Progress","designer1"
+"Add Dark Mode Support","Implement dark theme toggle for better user experience","enhancement,ui,accessibility","Medium","Backlog","developer2"
+"Update API Documentation","Refresh the API docs with new endpoints and examples","docs,api","Low","Todo","technical-writer"
+"Performance Optimization","Optimize database queries and reduce page load times","performance,backend","Medium","In Progress","developer1"
