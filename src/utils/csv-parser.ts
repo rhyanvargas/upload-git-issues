@@ -1,6 +1,7 @@
 import fs from 'fs';
 import csv from 'csv-parser';
 import { IssueData } from '../types/index.js';
+import { sanitizeCsvData } from './security.js';
 
 export function parseCsvFile(filePath: string): Promise<IssueData[]> {
   return new Promise((resolve, reject) => {
@@ -33,11 +34,11 @@ function parseRowToIssue(row: any): IssueData | null {
     return null;
   }
 
-  // Map common CSV column names to issue properties
-  const title = row.Title || row.title || row.TITLE || row.name || row.Name || row.NAME;
-  const body = row.Description || row.description || row.DESCRIPTION || 
+  // Map common CSV column names to issue properties (with sanitization)
+  const title = sanitizeCsvData(row.Title || row.title || row.TITLE || row.name || row.Name || row.NAME);
+  const body = sanitizeCsvData(row.Description || row.description || row.DESCRIPTION || 
                row.Body || row.body || row.BODY || 
-               row.Content || row.content || row.CONTENT || '';
+               row.Content || row.content || row.CONTENT || '');
 
   if (!title) {
     throw new Error('Title is required for each issue');

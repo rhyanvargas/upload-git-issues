@@ -8,9 +8,29 @@ import { parseCsvFile } from '../utils/csv-parser.js';
 import { validateCsvData } from '../utils/validators.js';
 import { createGitHubIssues } from '../services/github.js';
 import { IssueData, UploadOptions } from '../types/index.js';
+import { 
+  validateSafeFilePath, 
+  sanitizeGitHubToken, 
+  performSecurityAudit,
+  logSecurityEvent,
+  maskSensitiveData 
+} from '../utils/security.js';
 
 export async function uploadCsvToGitHub(csvFile?: string, options: UploadOptions = {}) {
   console.log(chalk.blue.bold('🚀 GitHub Issues CSV Uploader\n'));
+
+  // Legal disclaimer
+  if (!options.token && !csvFile) {
+    console.log(chalk.yellow.bold('⚖️  IMPORTANT DISCLAIMER'));
+    console.log(chalk.yellow('By using this tool, you acknowledge that YOU are responsible for:'));
+    console.log(chalk.yellow('• Ensuring the security and safety of your files'));
+    console.log(chalk.yellow('• Verifying this tool meets your security requirements'));
+    console.log(chalk.yellow('• Proper authorization for GitHub API usage'));
+    console.log(chalk.gray('See DISCLAIMER.md for complete legal terms.\n'));
+  }
+
+  // Security audit
+  performSecurityAudit({ csvFile, token: options.token, verbose: options.verbose });
 
   // Step 1: Get CSV file path
   const csvPath = await getCsvFilePath(csvFile);
@@ -57,10 +77,17 @@ export async function uploadCsvToGitHub(csvFile?: string, options: UploadOptions
 
 async function getCsvFilePath(csvFile?: string): Promise<string> {
   if (csvFile) {
-    if (!fs.existsSync(csvFile)) {
-      throw new Error(`CSV file not found: ${csvFile}`);
+    const resolvedPath = path.resolve(csvFile);
+    
+    // Security validation
+    const validation = validateSafeFilePath(resolvedPath);
+    if (!validation.safe) {
+      logSecurityEvent('File validation failed', { path: maskSensitiveData(resolvedPath, 'url'), reason: validation.reason });
+      throw new Error(`Security validation failed: ${validation.reason}`);
     }
-    return path.resolve(csvFile);
+    
+    logSecurityEvent('File access granted', { path: maskSensitiveData(resolvedPath, 'url') });
+    return resolvedPath;
   }
 
   const { filePath } = await inquirer.prompt([
@@ -72,12 +99,14 @@ async function getCsvFilePath(csvFile?: string): Promise<string> {
         if (!input.trim()) {
           return 'Please enter a file path';
         }
-        if (!fs.existsSync(input)) {
-          return 'File not found. Please enter a valid file path.';
+        
+        const resolvedPath = path.resolve(input.trim());
+        const validation = validateSafeFilePath(resolvedPath);
+        
+        if (!validation.safe) {
+          return `Security validation failed: ${validation.reason}`;
         }
-        if (!input.toLowerCase().endsWith('.csv')) {
-          return 'Please provide a CSV file (.csv extension)';
-        }
+        
         return true;
       }
     }
@@ -88,7 +117,14 @@ async function getCsvFilePath(csvFile?: string): Promise<string> {
 
 async function getGitHubToken(token?: string): Promise<string> {
   if (token) {
-    return token;
+    const validation = sanitizeGitHubToken(token);
+    if (!validation.valid) {
+      logSecurityEvent('Token validation failed', { reason: validation.reason });
+      throw new Error(`Invalid GitHub token: ${validation.reason}`);
+    }
+    
+    logSecurityEvent('Token validated successfully');
+    return validation.sanitized!;
   }
 
   console.log(chalk.yellow('\n🔑 GitHub Authentication Required'));
@@ -104,9 +140,12 @@ async function getGitHubToken(token?: string): Promise<string> {
         if (!input.trim()) {
           return 'Please enter your GitHub token';
         }
-        if (input.length < 10) {
-          return 'GitHub token seems too short. Please check and try again.';
+        
+        const validation = sanitizeGitHubToken(input);
+        if (!validation.valid) {
+          return `Invalid token: ${validation.reason}`;
         }
+        
         return true;
       }
     }
