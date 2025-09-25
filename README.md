@@ -1,13 +1,16 @@
-# 🚀 Upload Git Issues 
-![NPM Collaborators](https://img.shields.io/npm/collaborators/upload-git-issues)
-
-**Zero-config CLI to bulk upload CSV data to GitHub Issues**
-
-*Perfect for platform migrations - create GitHub Issues from your CSV exports, then use Linear's native GitHub import to sync.*
-
-
-
-
+<h1 align="center">🚀 Upload Git Issues</h1>
+<div align="center">
+<p align="center">
+<a href="https://www.npmjs.com/package/upload-git-issues">
+    <img alt="npm latest version" src="https://img.shields.io/npm/v/upload-git-issues/latest.svg">
+</a>
+</p>
+<h4 align="center">Zero-config CLI to bulk upload CSV data to GitHub Issues</h4>
+<p align="center">
+Perfect for platform migrations - create GitHub Issues from your CSV exports, then use Linear's native GitHub import to sync._
+</p>
+</div>
+<hr/>
 
 ## 🚀 Quick Start
 
@@ -20,6 +23,7 @@ npx upload-git-issues issues.csv --dry-run --verbose
 ```
 
 **What happens:**
+
 1. Interactive prompts guide you through GitHub authentication and repo selection
 2. Intelligent CSV parsing (works with Linear exports, Jira exports, any CSV format)
 3. Beautiful progress indicators show real-time status
@@ -38,6 +42,7 @@ Title,Description,Labels,Priority,Assignee
 ```
 
 Then run:
+
 ```bash
 npx upload-git-issues issues.csv --dry-run
 ```
@@ -47,6 +52,7 @@ npx upload-git-issues issues.csv --dry-run
 > **Note**: This tool is currently in pre-release. For local testing and development:
 
 ### Method 1: Development Mode (Fastest)
+
 ```bash
 git clone https://github.com/rhyanvargas/upload-git-issues.git
 cd upload-git-issues
@@ -56,6 +62,7 @@ npm run dev -- example.csv --dry-run
 ```
 
 ### Method 2: Build and Test
+
 ```bash
 npm run build
 npm start -- --help
@@ -63,6 +70,7 @@ npm start -- example.csv --dry-run
 ```
 
 ### Method 3: Global Installation Testing (Most Realistic)
+
 ```bash
 # Link for global testing (does NOT publish live)
 npm link
@@ -81,31 +89,31 @@ npm unlink -g upload-git-issues
 
 ## 📋 When to Use This Tool
 
-| **Your Situation**                         | **Use This Tool?**           | **Why**                                       |
-| ------------------------------------------ | ---------------------------- | --------------------------------------------- |
+| **Your Situation**                         | **Use This Tool?**           | **Why**                                               |
+| ------------------------------------------ | ---------------------------- | ----------------------------------------------------- |
 | **🔄 Migrating to Linear via GitHub**      | ✅ **Perfect Choice**        | Create GitHub Issues, then use Linear's GitHub import |
-| **📊 Have CSV data to upload**             | ✅ **Perfect Choice**        | Intelligent parsing handles any CSV format    |
-| **⚡ Need it done quickly**                | ✅ **Perfect Choice**        | One command, 2 minutes to complete            |
-| **🏢 Enterprise/Security requirements**    | ✅ **Perfect Choice**        | Built-in security audits and compliance       |
-| **👥 Non-technical team member**           | ✅ **Perfect Choice**        | Interactive prompts guide you through         |
-| **🔒 Single repository upload**            | ✅ **Perfect Choice**        | Optimized for this common use case            |
-| **🎯 Creating 5-1000+ issues**             | ✅ **Perfect Choice**        | Handles any volume with progress tracking     |
-|                                            |                              |                                               |
-| **🏗️ Multi-repository bulk operations**    | ⚠️ **Consider Alternatives** | Our tool focuses on single repositories       |
-| **📝 Complex issue templating needs**      | ⚠️ **Consider Alternatives** | Use tools with Mustache/Liquid support        |
-| **🤖 GitHub Actions workflow integration** | ⚠️ **Consider Alternatives** | Look for native CI/CD solutions               |
-| **💬 Adding comments to existing issues**  | ⚠️ **Consider Alternatives** | Our tool creates new issues only              |
-| **⚙️ Highly customized automation**        | ⚠️ **Consider Alternatives** | Use scriptable solutions                      |
+| **📊 Have CSV data to upload**             | ✅ **Perfect Choice**        | Intelligent parsing handles any CSV format            |
+| **⚡ Need it done quickly**                | ✅ **Perfect Choice**        | One command, 2 minutes to complete                    |
+| **🏢 Enterprise/Security requirements**    | ✅ **Perfect Choice**        | Built-in security audits and compliance               |
+| **👥 Non-technical team member**           | ✅ **Perfect Choice**        | Interactive prompts guide you through                 |
+| **🔒 Single repository upload**            | ✅ **Perfect Choice**        | Optimized for this common use case                    |
+| **🎯 Creating 5-1000+ issues**             | ✅ **Perfect Choice**        | Handles any volume with progress tracking             |
+|                                            |                              |                                                       |
+| **🏗️ Multi-repository bulk operations**    | ⚠️ **Consider Alternatives** | Our tool focuses on single repositories               |
+| **📝 Complex issue templating needs**      | ⚠️ **Consider Alternatives** | Use tools with Mustache/Liquid support                |
+| **🤖 GitHub Actions workflow integration** | ⚠️ **Consider Alternatives** | Look for native CI/CD solutions                       |
+| **💬 Adding comments to existing issues**  | ⚠️ **Consider Alternatives** | Our tool creates new issues only                      |
+| **⚙️ Highly customized automation**        | ⚠️ **Consider Alternatives** | Use scriptable solutions                              |
 
 ## 📋 Options
 
-| Option | Description | Example |
-|--------|-------------|---------|
-| `[csv-file]` | Path to CSV file | `./issues.csv` |
-| `--dry-run` | Preview without creating | `--dry-run` |
-| `--verbose` | Detailed logging | `--verbose` |
+| Option            | Description                | Example              |
+| ----------------- | -------------------------- | -------------------- |
+| `[csv-file]`      | Path to CSV file           | `./issues.csv`       |
+| `--dry-run`       | Preview without creating   | `--dry-run`          |
+| `--verbose`       | Detailed logging           | `--verbose`          |
 | `--token <token>` | GitHub token (skip prompt) | `--token ghp_abc123` |
-| `--repo <repo>` | Target repository | `--repo owner/repo` |
+| `--repo <repo>`   | Target repository          | `--repo owner/repo`  |
 
 ## 📊 CSV Format
 
